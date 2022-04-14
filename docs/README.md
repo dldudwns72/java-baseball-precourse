@@ -9,6 +9,11 @@ Domain
   * 공은 위치 정보와 숫자 정보를 가지고 있다. []
   * 위치는 1~3까지의 범위를 가진다. []
   * 숫자는 1~9까지의 범위를 가진다. []
+  * 잘못된 위치와 숫자 입력 시 IllegalArgumentException 발생
+
+* 세자리 공(Balls)
+  * 세자리수의 공의 숫자는 서로 중복이 되지 않는다. []
+  * 중복된 숫자를 입력할 경우 IllegalArgumentException 발생
 
 
 * 두개의 공 비교 (Comparison)
