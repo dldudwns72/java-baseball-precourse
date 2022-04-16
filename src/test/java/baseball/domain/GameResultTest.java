@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ResultTest {
+public class GameResultTest {
 
     Balls computerBalls;
 
@@ -25,7 +25,7 @@ public class ResultTest {
         Balls userBalls = new Balls(Arrays.asList(new Ball(1,5),
                 new Ball(2,7),
                 new Ball(3,0)));
-        Result result = new Result(computerBalls,userBalls);
+        GameResult result = new GameResult(computerBalls,userBalls);
         assertThat(result.gameResult()).isEqualTo("1볼");
     }
 
@@ -35,7 +35,7 @@ public class ResultTest {
         Balls userBalls = new Balls(Arrays.asList(new Ball(1,9),
                 new Ball(2,3),
                 new Ball(3,5)));
-        Result result = new Result(computerBalls,userBalls);
+        GameResult result = new GameResult(computerBalls,userBalls);
         assertThat(result.gameResult()).isEqualTo("2스트라이크");
     }
 
@@ -45,7 +45,7 @@ public class ResultTest {
         Balls userBalls = new Balls(Arrays.asList(new Ball(1,9),
                 new Ball(2,4),
                 new Ball(3,8)));
-        Result result = new Result(computerBalls,userBalls);
+        GameResult result = new GameResult(computerBalls,userBalls);
         assertThat(result.gameResult()).isEqualTo("낫싱");
     }
 
@@ -55,7 +55,7 @@ public class ResultTest {
         Balls userBalls = new Balls(Arrays.asList(new Ball(1,5),
                 new Ball(2,3),
                 new Ball(3,1)));
-        Result result = new Result(computerBalls,userBalls);
+        GameResult result = new GameResult(computerBalls,userBalls);
         assertThat(result.gameResult()).isEqualTo("2볼 1스트라이크");
     }
 }
