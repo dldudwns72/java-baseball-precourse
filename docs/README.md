@@ -16,15 +16,16 @@ Domain
   * 중복된 숫자를 입력할 경우 IllegalArgumentException 발생
 
 
-* 두개의 공 비교 (Comparison)
-  * 같은 수가 같은 자리에 있으면 스트라이크 []
-  * 같은 수가 다른 자리에 있으면 볼 []
-  * 같은 수가 전혀 없으면 낫싱 []
-
-
+* 두개의 공 판별 (Judgement)
+  * 같은 위치에 같은 수에 있으면 스트라이크 []
+  * 다른 위치에 같은 수 있으면 볼 []
+  
+  
 * 게임 결과 (Result)
   * 컴퓨터공과 사용자공을 비교하여 전체 결과값을 반환 []
- 
+  * 모든 위치에 일차하는 공이 없으면 낫싱 반환 []
+
+
 * 예외 발생
   * 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException 발생
   * IllegalArgumentException 예외 발생 시 애플리케이션 종료 
