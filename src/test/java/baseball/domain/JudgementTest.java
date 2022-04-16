@@ -4,40 +4,36 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class JudgementTest {
 
-    Ball computerBall1;
-    Ball userBall1;
-    Ball computerBall2;
-    Ball userBall2;
-    Ball computerBall3;
-    Ball userBall3;
+    Balls computerBalls;
 
     @BeforeEach
-    void setUp(){
-         computerBall1 = new Ball(1,1);
-         userBall1 = new Ball(1,1);
+    void setUp() {
+        Ball computerBall1 = new Ball(1, 1);
+        Ball computerBall2 = new Ball(2, 4);
+        Ball computerBall3 = new Ball(3, 7);
 
-         computerBall2 = new Ball(2,4);
-         userBall2 = new Ball(2,3);
-
-         computerBall3 = new Ball(3,7);
-         userBall3 = new Ball(3,4);
+        computerBalls = new Balls(Arrays.asList(computerBall1,computerBall2, computerBall3));
     }
 
     @Test
     @DisplayName("두개의 공의 위치와 숫자가 같다면 스트라이크")
-    void isStrike(){
-        Judgement judgement = new Judgement(computerBall1,userBall1);
+    void isStrike() {
+        Ball userBall = new Ball(1,1);
+        Judgement judgement = new Judgement(computerBalls, userBall);
         assertThat(judgement.getResult()).isEqualTo("스트라이크");
     }
 
     @Test
     @DisplayName("두개의 공의 위치가 다르고 숫자가 같다면 볼")
-    void isBall(){
-        Judgement judgement = new Judgement(computerBall2,userBall3);
+    void isBall() {
+        Ball userBall = new Ball(3,4);
+        Judgement judgement = new Judgement(computerBalls, userBall);
         assertThat(judgement.getResult()).isEqualTo("볼");
     }
 
