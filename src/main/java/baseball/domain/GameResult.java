@@ -1,6 +1,6 @@
 package baseball.domain;
 
-public class Result {
+public class GameResult {
 
     private static final int MIN_RESULT_COUNT = 0;
     private static final int MAX_RESULT_COUNT = 3;
@@ -36,6 +36,15 @@ public class Result {
     private String printBallCount() {
         if (ballCount > MIN_RESULT_COUNT)
             return ballCount + BALL_MESSAGE + " ";
+
         return EMPTY_MESSAGE;
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
+    public int getBallCount() {
+        return ballCount;
     }
 }
