@@ -29,13 +29,13 @@ public class StringTest {
         assertThat(substringLetter).isEqualTo("1,2");
     }
 
-    public class StringException extends StringIndexOutOfBoundsException{
+    public class StringException extends StringIndexOutOfBoundsException {
         private String customMessage;
 
-         StringException(){
+        public StringException() {
         }
 
-        public StringException(String message){
+        public StringException(String message) {
             super(message);
         }
     }
@@ -46,19 +46,22 @@ public class StringTest {
         String letter = "abc";
 
         assertThatThrownBy(() -> {
-            try{
+            try {
                 letter.charAt(5);
-            }catch (StringException e){
-                System.out.println("안녕하세요");
+            } catch (StringIndexOutOfBoundsException e) {
+                throw new StringException("charAt 메서드의 문자열의 크기는 " + letter.length() + " 이하여야 합니다.");
             }
+        }).isInstanceOf(StringException.class)
+                .hasMessageContaining("charAt 메서드의 문자열의 크기");
 
-        }).isInstanceOf(StringIndexOutOfBoundsException.class)
-                .hasMessageContaining("String index out of range");
-
-        assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
+        assertThatExceptionOfType(StringException.class)
                 .isThrownBy(() -> {
-                    letter.charAt(6);
-                }).withMessageMatching("String index out of range: 6");
+                    try {
+                        letter.charAt(6);
+                    } catch (StringIndexOutOfBoundsException e) {
+                        throw new StringException("charAt 메서드의 문자열의 크기는 " + letter.length() + " 이하여야 합니다.");
+                    }
+                }).withMessageMatching("charAt 메서드의 문자열의 크기는 3 이하여야 합니다.");
     }
 
 
