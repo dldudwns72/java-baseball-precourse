@@ -1,76 +1,41 @@
 package baseball.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+public class Result {
 
-public class GameResult {
+    private static final int MIN_RESULT_COUNT = 0;
+    private static final int MAX_RESULT_COUNT = 3;
 
-    private Balls computerBalls;
-    private Balls userBalls;
-    private List<String> ballResults = new ArrayList<>();
-    private List<String> strikeResults = new ArrayList<>();
+    private static final String NOTHING_MESSAGE = "낫싱";
+    private static final String STRIKE_MESSAGE = "스트라이크";
+    private static final String BALL_MESSAGE = "볼";
+    private static final String EMPTY_MESSAGE = "";
 
-    public GameResult(Balls computerBalls, Balls userBalls) {
-        this.computerBalls = computerBalls;
-        this.userBalls = userBalls;
+    private int strikeCount;
+    private int ballCount;
+
+    public void addStrikeCount() {
+        this.strikeCount++;
     }
 
-    public String gameResult() {
-        List<String> results = new ArrayList<>();
-        for (int index = 0; index < computerBalls.getSize(); index++) {
-            Judgement judgement = new Judgement(computerBalls, userBalls.getBall(index));
-            results.add(judgement.getResult());
-        }
-
-        return filterBallResults(results);
+    public void addBallCount() {
+        this.ballCount++;
     }
 
-    private String filterBallResults(List<String> gameResults) {
-        for (String gameResult : gameResults) {
-            separateResultByJudgement(gameResult);
-        }
-        return printResult();
+    public String printResultMessage() {
+        if (strikeCount == 0 && ballCount == 0)
+            return NOTHING_MESSAGE;
+        return printBallCount() + printStrikeCount();
     }
 
-    private void separateResultByJudgement(String result) {
-        if (result.equals("볼")) {
-            ballResults.add("볼");
-        }
-
-        if (result.equals("스트라이크")) {
-            strikeResults.add("스트라이크");
-        }
+    private String printStrikeCount() {
+        if (strikeCount > MIN_RESULT_COUNT)
+            return strikeCount + STRIKE_MESSAGE;
+        return EMPTY_MESSAGE;
     }
 
-    private String printResult() {
-        String printResult = "";
-        String printBall = "";
-        String printStrike = "";
-
-        if (ballResults.size() > 0) {
-            printBall = ballResults.size() + "볼";
-            printResult = printBall;
-        }
-
-        if (strikeResults.size() > 0) {
-            printStrike = strikeResults.size() + "스트라이크";
-
-            if(ballResults.size() == 0){
-                printResult += printStrike;
-            }
-
-            if(ballResults.size() > 0){
-                printResult += " " + printStrike;
-            }
-        }
-
-        if (ballResults.size() == 0 && strikeResults.size() == 0) {
-            printResult = "낫싱";
-        }
-
-        return printResult;
-
+    private String printBallCount() {
+        if (ballCount > MIN_RESULT_COUNT)
+            return ballCount + BALL_MESSAGE + " ";
+        return EMPTY_MESSAGE;
     }
-
-
 }
