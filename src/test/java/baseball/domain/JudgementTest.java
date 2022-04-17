@@ -11,30 +11,35 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class JudgementTest {
 
     Balls computerBalls;
+    Balls userBalls;
 
     @BeforeEach
     void setUp() {
         Ball computerBall1 = new Ball(1, 1);
         Ball computerBall2 = new Ball(2, 4);
         Ball computerBall3 = new Ball(3, 7);
+        computerBalls = new Balls(Arrays.asList(computerBall1, computerBall2, computerBall3));
 
-        computerBalls = new Balls(Arrays.asList(computerBall1,computerBall2, computerBall3));
+        Ball userBall1 = new Ball(1, 1);
+        Ball userBall2 = new Ball(2, 7);
+        Ball userBall3 = new Ball(3, 4);
+        userBalls = new Balls(Arrays.asList(userBall1, userBall2, userBall3));
     }
 
     @Test
-    @DisplayName("두개의 공의 위치와 숫자가 같다면 스트라이크")
-    void isStrike() {
-        Ball userBall = new Ball(1,1);
-        Judgement judgement = new Judgement(computerBalls, userBall);
-        assertThat(judgement.getResult()).isEqualTo("스트라이크");
+    @DisplayName("스트라이크 개수 구하기")
+    void getStrikeCount() {
+        Judgement judgement = new Judgement(computerBalls, userBalls);
+        GameResult gameResult = judgement.getResult();
+        assertThat(gameResult.getStrikeCount()).isEqualTo(1);
     }
 
     @Test
-    @DisplayName("두개의 공의 위치가 다르고 숫자가 같다면 볼")
-    void isBall() {
-        Ball userBall = new Ball(3,4);
-        Judgement judgement = new Judgement(computerBalls, userBall);
-        assertThat(judgement.getResult()).isEqualTo("볼");
+    @DisplayName("볼 개수 구하기")
+    void getBallCount() {
+        Judgement judgement = new Judgement(computerBalls, userBalls);
+        assertThat(judgement.getResult().getBallCount()).isEqualTo(2);
     }
+
 
 }
