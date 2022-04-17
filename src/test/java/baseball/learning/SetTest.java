@@ -1,6 +1,5 @@
 package baseball.learning;
 
-import org.assertj.core.internal.Strings;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,7 +13,7 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class setTest {
+public class SetTest {
 
     private Set<Integer> numbers;
 
@@ -30,7 +29,7 @@ public class setTest {
     @Test
     @DisplayName("Set 의 사이즈를 구하는 size 메소드 테스트")
     void size(){
-        assertThat(numbers.size()).isEqualTo(4);
+        assertThat(numbers.size()).isEqualTo(3);
     }
 
     @ParameterizedTest
