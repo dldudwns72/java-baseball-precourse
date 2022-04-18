@@ -1,16 +1,17 @@
 package baseball.domain;
 
 
+import baseball.exception.PositionException;
+
 public class Position {
 
     private static final int MIN_POSITION = 1;
     private static final int MAX_POSITION = 3;
-    private static final String BALL_POSITION_EXCEPTION_MESSAGE = "공은 세자리수여야 합니다.";
 
     private int position;
 
     public Position(int position) {
-        if (isOverPosition(position)) throw new IllegalArgumentException(BALL_POSITION_EXCEPTION_MESSAGE);
+        if (isOverPosition(position)) throw new PositionException();
 
         this.position = position;
     }

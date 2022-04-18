@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.exception.PositionException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +21,7 @@ public class PositionTest {
     void errorPositionOverThree(){
         assertThatThrownBy(() ->{
             new Position(4);
-        }).isInstanceOf(IllegalArgumentException.class)
+        }).isInstanceOf(PositionException.class)
                 .hasMessageContaining("세자리수")
         ;
     }
@@ -30,7 +31,7 @@ public class PositionTest {
     void errorPositionUnderZero(){
         assertThatThrownBy(() ->{
             new Position(-1);
-        }).isInstanceOf(IllegalArgumentException.class)
+        }).isInstanceOf(PositionException.class)
                 .hasMessageContaining("세자리수")
         ;
     }

@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.exception.BallNumberException;
+import baseball.exception.PositionException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -54,16 +56,16 @@ public class BallTest {
     void generateNumberException(){
         assertThatThrownBy(() ->{
             new Ball(new Position(1),new BallNumber(11));
-        }).isInstanceOf(IllegalArgumentException.class)
+        }).isInstanceOf(BallNumberException.class)
                 .hasMessageContaining("범위는 1~9 사이");
     }
 
     @Test
-    @DisplayName("공의 숫자가 범위를 벗어날 경우 에러 발생")
+    @DisplayName("공의 위치가 범위를 벗어날 경우 에러 발생")
     void generatePositionException(){
         assertThatThrownBy(() ->{
             new Ball(new Position(4),new BallNumber(3));
-        }).isInstanceOf(IllegalArgumentException.class)
+        }).isInstanceOf(PositionException.class)
                 .hasMessageContaining("공은 세자리수");
 
     }
