@@ -14,6 +14,8 @@ public class Game {
     private static final int MAX_BALL_NUMBER = 9;
     private static final int BALL_SIZE = 3;
 
+
+    private static final String DELIMITER = "";
     private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String GAME_FINAL_CONDITION = "3스트라이크";
     private static final String GAME_FINISH_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -42,7 +44,7 @@ public class Game {
     private static String[] splitReadInput() {
         System.out.print(INPUT_NUMBER_MESSAGE);
         String inputBall = Console.readLine();
-        return inputBall.split("");
+        return inputBall.split(DELIMITER);
     }
 
     private static List<Ball> inputBalls(String[] splitInputBall) {
