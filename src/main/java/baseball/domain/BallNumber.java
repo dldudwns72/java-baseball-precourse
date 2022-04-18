@@ -1,16 +1,17 @@
 package baseball.domain;
 
 
+import baseball.exception.BallNumberException;
+
 public class BallNumber {
 
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
-    private static final String BALL_NUMBER_EXCEPTION_MESSAGE = "공 숫자의 범위는 1~9 사이 입니다.";
 
     private int number;
 
     public BallNumber(int number) {
-        if (isOverNumber(number)) throw new IllegalArgumentException(BALL_NUMBER_EXCEPTION_MESSAGE);
+        if (isOverNumber(number)) throw new BallNumberException();
         this.number = number;
     }
 

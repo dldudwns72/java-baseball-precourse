@@ -21,9 +21,7 @@ public class Game {
 
     public void start() {
         boolean isStart = true;
-
         Balls computerBalls = createComputerBall();
-
         while (isStart) {
             isStart = gaming(computerBalls);
         }
@@ -36,13 +34,9 @@ public class Game {
         Balls userBalls = new Balls(inputBalls(splitReadInput()));
         Judgement judgement = new Judgement(computerBalls,userBalls);
         GameResult result = judgement.getResult();
-
         String printResult = result.printResultMessage();
-
         System.out.println(printResult);
-
         return !printResult.equals(GAME_FINAL_CONDITION);
-
     }
 
     private static String[] splitReadInput() {
@@ -61,14 +55,11 @@ public class Game {
 
     private Balls createComputerBall() {
         List<Ball> balls = new ArrayList<>();
-
         for (int index = 0; index < BALL_SIZE; index++) {
             int randomNumber = Randoms.pickNumberInRange(MIN_BALL_NUMBER, MAX_BALL_NUMBER);
             balls.add(new Ball(new Position(index+1), new BallNumber(randomNumber)));
         }
-
         return new Balls(balls);
     }
-
 
 }

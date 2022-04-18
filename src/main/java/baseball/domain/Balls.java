@@ -8,7 +8,7 @@ public class Balls {
 
     private final String BALL_DUPLICATION_EXCEPTION_MESSAGE = "공의 숫자는 중복될 수 없습니다.";
 
-    private List<Ball> balls = new ArrayList<>();
+    private List<Ball> balls;
 
     public Balls(List<Ball> balls) {
         List<Integer> prevBallNumbers = new ArrayList<>();
