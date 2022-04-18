@@ -15,7 +15,7 @@ class BallsTest {
     @Test
     @DisplayName("공 생성")
     public void createBall(){
-        Ball ball = new Ball(new Position(1),1);
+        Ball ball = new Ball(new Position(1),new BallNumber(1));
         assertThat(ball.getPosition()).isEqualTo(1);
         assertThat(ball.getNumber()).isEqualTo(1);
     }
@@ -24,9 +24,9 @@ class BallsTest {
     @DisplayName("세자리 공 생성")
     @CsvSource(value = {"0:1","1:2","2:6"} ,delimiter = ':')
     public void createBalls(int index , int ballNumber){
-        Ball ball1 = new Ball(new Position(1),1);
-        Ball ball2 = new Ball(new Position(2),2);
-        Ball ball3 = new Ball(new Position(3),6);
+        Ball ball1 = new Ball(new Position(1),new BallNumber(1));
+        Ball ball2 = new Ball(new Position(2),new BallNumber(2));
+        Ball ball3 = new Ball(new Position(3),new BallNumber(6));
         Balls balls = new Balls(Arrays.asList(ball1,ball2,ball3));
 
         Ball ball = balls.getBall(index);
@@ -36,9 +36,9 @@ class BallsTest {
     @Test
     @DisplayName("중복 발생 시 IllegalArgumentException 예외 발생")
     public void duplicatedBallsException(){
-        Ball ball1 = new Ball(new Position(1),1);
-        Ball ball2 = new Ball(new Position(2),1);
-        Ball ball3 = new Ball(new Position(3),6);
+        Ball ball1 = new Ball(new Position(1),new BallNumber(1));
+        Ball ball2 = new Ball(new Position(2),new BallNumber(1));
+        Ball ball3 = new Ball(new Position(3),new BallNumber(6));
 
         assertThatThrownBy(() ->{
             Balls balls = new Balls(Arrays.asList(ball1,ball2,ball3));

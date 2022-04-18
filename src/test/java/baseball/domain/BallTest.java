@@ -18,11 +18,11 @@ public class BallTest {
 
     @BeforeEach
     void setUp(){
-         answer = new Ball(new Position(1),1);
+         answer = new Ball(new Position(1),new BallNumber(1));
 
-         userBall1 = new Ball(new Position(1),1);
-         userBall2 = new Ball(new Position(1),4);
-         userBall3 = new Ball(new Position(2),1);
+         userBall1 = new Ball(new Position(1),new BallNumber(1));
+         userBall2 = new Ball(new Position(1),new BallNumber(4));
+         userBall3 = new Ball(new Position(2),new BallNumber(1));
     }
 
     @Test
@@ -53,7 +53,7 @@ public class BallTest {
     @DisplayName("공의 숫자가 범위를 벗어날 경우 에러 발생")
     void generateNumberException(){
         assertThatThrownBy(() ->{
-            new Ball(new Position(1),11);
+            new Ball(new Position(1),new BallNumber(11));
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("범위는 1~9 사이");
     }
@@ -62,7 +62,7 @@ public class BallTest {
     @DisplayName("공의 숫자가 범위를 벗어날 경우 에러 발생")
     void generatePositionException(){
         assertThatThrownBy(() ->{
-            new Ball(new Position(4),3);
+            new Ball(new Position(4),new BallNumber(3));
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("공은 세자리수");
 
