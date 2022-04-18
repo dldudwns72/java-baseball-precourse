@@ -2,8 +2,13 @@ package baseball.domain;
 
 public class Ball {
 
-    private final String BALL_POSITION_EXCEPTION_MESSAGE = "공은 세자리수여야 합니다.";
-    private final String BALL_NUMBER_EXCEPTION_MESSAGE = "공 숫자의 범위는 1~9 사이 입니다.";
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 9;
+    private static final int MIN_POSITION = 1;
+    private static final int MAX_POSITION = 3;
+
+    private static final String BALL_POSITION_EXCEPTION_MESSAGE = "공은 세자리수여야 합니다.";
+    private static final String BALL_NUMBER_EXCEPTION_MESSAGE = "공 숫자의 범위는 1~9 사이 입니다.";
 
     private int position;
 
@@ -17,11 +22,11 @@ public class Ball {
     }
 
     private boolean isOverPosition(int position) {
-        return position < 0 || position > 3;
+        return position < MIN_POSITION || position > MAX_POSITION;
     }
 
     private boolean isOverNumber(int number) {
-        return number < 0 || number > 9;
+        return number < MIN_NUMBER || number > MAX_NUMBER;
     }
 
     public int getNumberByPosition(int position) {
