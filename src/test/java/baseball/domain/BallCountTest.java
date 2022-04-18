@@ -12,7 +12,7 @@ public class BallCountTest {
     @DisplayName("1개의 볼 생성")
     void getBallCount() {
         BallCount ballCount = new BallCount(2);
-        assertThat(ballCount.getBallCount()).isEqualTo(2);
+        assertThat(ballCount.getCount()).isEqualTo(2);
     }
 
     @Test

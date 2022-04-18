@@ -12,7 +12,7 @@ public class StrikeCountTest {
     @DisplayName("1개의 스트라이크 생성")
     void getStrikeCount() {
         StrikeCount strikeCount = new StrikeCount(1);
-        assertThat(strikeCount.getStrikeCount()).isEqualTo(1);
+        assertThat(strikeCount.getCount()).isEqualTo(1);
     }
 
     @Test
