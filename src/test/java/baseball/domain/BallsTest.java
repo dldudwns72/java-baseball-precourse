@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.exception.BallsException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -42,7 +43,7 @@ class BallsTest {
 
         assertThatThrownBy(() ->{
             Balls balls = new Balls(Arrays.asList(ball1,ball2,ball3));
-        }).isInstanceOf(IllegalArgumentException.class)
+        }).isInstanceOf(BallsException.class)
                 .hasMessageContaining("공의 숫자는 중복될 수 없습니다.");
     }
 }

@@ -1,12 +1,13 @@
 package baseball.domain;
 
 
+import baseball.exception.BallsException;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Balls {
 
-    private final String BALL_DUPLICATION_EXCEPTION_MESSAGE = "공의 숫자는 중복될 수 없습니다.";
 
     private List<Ball> balls;
 
@@ -21,7 +22,7 @@ public class Balls {
 
     private void checkDuplicatedBall(List<Integer> prevBallNumbers, Ball ball) {
         if (prevBallNumbers.contains(ball.getNumber())) {
-            throw new IllegalArgumentException(BALL_DUPLICATION_EXCEPTION_MESSAGE);
+            throw new BallsException();
         }
     }
 
