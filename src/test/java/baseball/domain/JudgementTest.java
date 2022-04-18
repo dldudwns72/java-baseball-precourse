@@ -15,14 +15,14 @@ public class JudgementTest {
 
     @BeforeEach
     void setUp() {
-        Ball computerBall1 = new Ball(1, 1);
-        Ball computerBall2 = new Ball(2, 4);
-        Ball computerBall3 = new Ball(3, 7);
+        Ball computerBall1 = new Ball(new Position(1), 1);
+        Ball computerBall2 = new Ball(new Position(2), 4);
+        Ball computerBall3 = new Ball(new Position(3), 7);
         computerBalls = new Balls(Arrays.asList(computerBall1, computerBall2, computerBall3));
 
-        Ball userBall1 = new Ball(1, 1);
-        Ball userBall2 = new Ball(2, 7);
-        Ball userBall3 = new Ball(3, 4);
+        Ball userBall1 = new Ball(new Position(1), 1);
+        Ball userBall2 = new Ball(new Position(2), 7);
+        Ball userBall3 = new Ball(new Position(3), 4);
         userBalls = new Balls(Arrays.asList(userBall1, userBall2, userBall3));
     }
 

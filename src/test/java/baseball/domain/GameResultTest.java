@@ -13,18 +13,18 @@ public class GameResultTest {
 
     @BeforeEach
     void setUp(){
-        Ball computerBall1 = new Ball(1, 1);
-        Ball computerBall2 = new Ball(2, 4);
-        Ball computerBall3 = new Ball(3, 7);
+        Ball computerBall1 = new Ball(new Position(1), 1);
+        Ball computerBall2 = new Ball(new Position(2), 4);
+        Ball computerBall3 = new Ball(new Position(3), 7);
         computerBalls = new Balls(Arrays.asList(computerBall1, computerBall2, computerBall3));
     }
 
     @Test
     @DisplayName("2볼 1스트라이크 반환")
     void twoBallOneStrike(){
-        Ball userBall1 = new Ball(1, 1);
-        Ball userBall2 = new Ball(2, 7);
-        Ball userBall3 = new Ball(3, 4);
+        Ball userBall1 = new Ball(new Position(1), 1);
+        Ball userBall2 = new Ball(new Position(2), 7);
+        Ball userBall3 = new Ball(new Position(3), 4);
         Balls userBalls = new Balls(Arrays.asList(userBall1, userBall2, userBall3));
         Judgement judgement = new Judgement(computerBalls,userBalls);
 
@@ -35,9 +35,9 @@ public class GameResultTest {
     @Test
     @DisplayName("1볼 1스트라이크 반환")
     void oneBallOneStrike(){
-        Ball userBall1 = new Ball(1, 1);
-        Ball userBall2 = new Ball(2, 8);
-        Ball userBall3 = new Ball(3, 4);
+        Ball userBall1 = new Ball(new Position(1), 1);
+        Ball userBall2 = new Ball(new Position(2), 8);
+        Ball userBall3 = new Ball(new Position(3), 4);
         Balls userBalls = new Balls(Arrays.asList(userBall1, userBall2, userBall3));
         Judgement judgement = new Judgement(computerBalls,userBalls);
 
@@ -48,9 +48,9 @@ public class GameResultTest {
     @Test
     @DisplayName("1스트라이크 반환")
     void OneStrike(){
-        Ball userBall1 = new Ball(1, 1);
-        Ball userBall2 = new Ball(2, 8);
-        Ball userBall3 = new Ball(3, 3);
+        Ball userBall1 = new Ball(new Position(1), 1);
+        Ball userBall2 = new Ball(new Position(2), 8);
+        Ball userBall3 = new Ball(new Position(3), 3);
         Balls userBalls = new Balls(Arrays.asList(userBall1, userBall2, userBall3));
         Judgement judgement = new Judgement(computerBalls,userBalls);
 
@@ -61,9 +61,9 @@ public class GameResultTest {
     @Test
     @DisplayName("1볼 반환")
     void OneBall(){
-        Ball userBall1 = new Ball(1, 2);
-        Ball userBall2 = new Ball(2, 7);
-        Ball userBall3 = new Ball(3, 3);
+        Ball userBall1 = new Ball(new Position(1), 2);
+        Ball userBall2 = new Ball(new Position(2), 7);
+        Ball userBall3 = new Ball(new Position(3), 3);
         Balls userBalls = new Balls(Arrays.asList(userBall1, userBall2, userBall3));
         Judgement judgement = new Judgement(computerBalls,userBalls);
 

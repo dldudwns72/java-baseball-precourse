@@ -54,7 +54,7 @@ public class Game {
     private static List<Ball> inputBalls(String[] splitInputBall) {
         List<Ball> inputBalls = new ArrayList<>();
         for (int index = 1; index <= splitInputBall.length; index++) {
-            inputBalls.add(new Ball(index, Integer.parseInt(splitInputBall[index - 1])));
+            inputBalls.add(new Ball(new Position(index), Integer.parseInt(splitInputBall[index - 1])));
         }
         return inputBalls;
     }
@@ -64,7 +64,7 @@ public class Game {
 
         for (int index = 0; index < BALL_SIZE; index++) {
             int randomNumber = Randoms.pickNumberInRange(MIN_BALL_NUMBER, MAX_BALL_NUMBER);
-            balls.add(new Ball(index + 1, randomNumber));
+            balls.add(new Ball(new Position(index+1), randomNumber));
         }
 
         return new Balls(balls);

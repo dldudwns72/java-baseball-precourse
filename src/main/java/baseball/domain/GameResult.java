@@ -22,7 +22,7 @@ public class GameResult {
     }
 
     public String printResultMessage() {
-        if (strikeCount == 0 && ballCount == 0)
+        if (strikeCount == MIN_RESULT_COUNT && ballCount == MIN_RESULT_COUNT)
             return NOTHING_MESSAGE;
         return printBallCount() + printStrikeCount();
     }
