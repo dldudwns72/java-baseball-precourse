@@ -3,18 +3,22 @@ package baseball.domain;
 public class GameResult {
 
     private static final int MIN_RESULT_COUNT = 0;
-    private static final int MAX_RESULT_COUNT = 3;
+    private static final int DEFAULT_COUNT = 0;
 
     private static final String NOTHING_MESSAGE = "낫싱";
     private static final String STRIKE_MESSAGE = "스트라이크";
     private static final String BALL_MESSAGE = "볼";
     private static final String EMPTY_MESSAGE = "";
 
-    private int strikeCount;
+    private StrikeCount strikeCount;
     private int ballCount;
 
+    public GameResult(){
+        strikeCount = new StrikeCount(DEFAULT_COUNT);
+    }
+
     public void addStrikeCount() {
-        this.strikeCount++;
+        strikeCount.addStrikeCount();
     }
 
     public void addBallCount() {
@@ -22,14 +26,14 @@ public class GameResult {
     }
 
     public String printResultMessage() {
-        if (strikeCount == MIN_RESULT_COUNT && ballCount == MIN_RESULT_COUNT)
+        if (strikeCount.getStrikeCount() == MIN_RESULT_COUNT && ballCount == MIN_RESULT_COUNT)
             return NOTHING_MESSAGE;
         return printBallCount() + printStrikeCount();
     }
 
     private String printStrikeCount() {
-        if (strikeCount > MIN_RESULT_COUNT)
-            return strikeCount + STRIKE_MESSAGE;
+        if (strikeCount.getStrikeCount() > MIN_RESULT_COUNT)
+            return strikeCount.getStrikeCount() + STRIKE_MESSAGE;
         return EMPTY_MESSAGE;
     }
 
@@ -41,7 +45,7 @@ public class GameResult {
     }
 
     public int getStrikeCount() {
-        return strikeCount;
+        return strikeCount.getStrikeCount();
     }
 
     public int getBallCount() {
