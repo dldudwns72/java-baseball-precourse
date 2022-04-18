@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.exception.BallNumberException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +21,7 @@ public class BallNumberTest {
     void errorBallNumberOverNine(){
         assertThatThrownBy(() ->{
             new BallNumber(10);
-        }).isInstanceOf(IllegalArgumentException.class)
+        }).isInstanceOf(BallNumberException.class)
                 .hasMessageContaining("숫자의 범위는 1~9 사이")
         ;
     }
@@ -30,7 +31,7 @@ public class BallNumberTest {
     void errorBallNumberUnderZero(){
         assertThatThrownBy(() ->{
             new BallNumber(-1);
-        }).isInstanceOf(IllegalArgumentException.class)
+        }).isInstanceOf(BallNumberException.class)
                 .hasMessageContaining("숫자의 범위는 1~9 사이")
         ;
     }
